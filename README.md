@@ -1,2 +1,2 @@
 # pddl
-A solution to second assignment given in CISC 352.
+A solution to the second assignment given in CISC 352.
