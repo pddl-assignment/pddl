@@ -33,9 +33,6 @@
         
         ;Hero's holding a sword
         (holding ?s - swords)
-    
-        ;It becomes true when a trap is disarmed
-        (trap-disarmed ?loc)
         
     )
 
@@ -158,7 +155,7 @@
             (arm-free)
         )
         :effect (and
-            (not (has-trap ?loc))
+            (not (has-trap ?loc)) ;The trap has been disarmed, meaning this cell no longer effectively contains a trap.
         )
     )
     
