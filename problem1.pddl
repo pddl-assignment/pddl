@@ -23,6 +23,7 @@
     (has-trap cell2)
     
     ;Graph Connectivity
+    ;We must connect cell1 to cell2, and cell2 to cell1, to account for the undirected nature of the graph.
     ;cell1
     (connected cell1 cell2)
     ;cell2

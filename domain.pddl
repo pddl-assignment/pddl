@@ -62,7 +62,13 @@
         )
     )
     
-    ;When this action is executed, the hero gets into a location with a trap
+    ;When this action is executed, the hero gets into a location with a trap if
+    ;   - hero is at current location
+    ;   - cells are connected
+    ;   - there is no trap in current loc
+    ;   - the place we're going to has a trap
+    ;   - the hero's arm is free, and
+    ;   - destination has not been destroyed
     (:action move-to-trap
         :parameters (?from ?to - cells)
         :precondition (and 
@@ -80,7 +86,13 @@
         )
     )
 
-    ;When this action is executed, the hero gets into a location with a monster
+    ;When this action is executed, the hero gets into a location with a monster if
+    ;   - hero is at current location
+    ;   - cells are connected
+    ;   - the hero is holding a sword
+    ;   - the destination has a monster
+    ;   - there is no trap in current loc
+    ;   - destination has not been destroyed
     (:action move-to-monster
         :parameters (?from ?to - cells ?s - swords)
         :precondition (and 
@@ -98,7 +110,10 @@
         )
     )
     
-    ;Hero picks a sword if he's in the same location
+    ;Hero can pick up a sword if
+    ;   - hero is at loc
+    ;   - hero's arm is free
+    ;   - there is a sword at loc
     (:action pick-sword
         :parameters (?loc - cells ?s - swords)
         :precondition (and 
@@ -112,7 +127,11 @@
         )
     )
     
-    ;Hero destroys his sword. 
+    ;Hero can destroy his sword if
+    ;   - hero is at loc
+    ;   - there is no monster at loc
+    ;   - there is no trap at loc
+    ;   - the hero is holding a sword 
     (:action destroy-sword
         :parameters (?loc - cells ?s - swords)
         :precondition (and 
@@ -127,7 +146,10 @@
         )
     )
     
-    ;Hero disarms the trap with his free arm
+    ;Hero disarms the trap with his free arm if
+    ;   - hero is at loc
+    ;   - trap is at loc
+    ;   - hero's arm is free
     (:action disarm-trap
         :parameters (?loc - cells)
         :precondition (and 
